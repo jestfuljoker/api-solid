@@ -51,13 +51,7 @@
 		"@typescript-eslint/explicit-function-return-type": "error",
 		"no-useless-constructor": "off",
 		"no-empty-function": "off",
-		"import/extensions": [
-			"error",
-			"ignorePackages",
-			{
-				"ts": "never"
-			}
-		],
+		"import/extensions": "off",
 		"import-helpers/order-imports": [
 			"warn",
 			{
