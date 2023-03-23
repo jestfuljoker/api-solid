@@ -2,9 +2,11 @@ lockfileVersion: 5.3
 
 specifiers:
   '@prisma/client': 4.11.0
+  '@types/bcryptjs': 2.4.2
   '@types/node': 18.15.5
   '@typescript-eslint/eslint-plugin': 5.56.0
   '@typescript-eslint/parser': 5.56.0
+  bcryptjs: 2.4.3
   dotenv: 16.0.3
   eslint: 8.36.0
   eslint-config-airbnb-base: 15.0.0
@@ -26,11 +28,13 @@ specifiers:
 
 dependencies:
   '@prisma/client': 4.11.0_prisma@4.11.0
+  bcryptjs: 2.4.3
   dotenv: 16.0.3
   fastify: 4.15.0
   zod: 3.21.4
 
 devDependencies:
+  '@types/bcryptjs': 2.4.2
   '@types/node': 18.15.5
   '@typescript-eslint/eslint-plugin': 5.56.0_d1c49064c568670e6a6217f618eab47f
   '@typescript-eslint/parser': 5.56.0_eslint@8.36.0+typescript@5.0.2
@@ -405,6 +409,10 @@ packages:
     resolution: {integrity: sha512-0AEBi2HXGV02cf6ASsBPhfsVIbVSDC9nbQed4iiY5eHttW9ZtMxHThuKZE1pnESbr8HRdgmFSa/Kn4OSNYuibg==}
     requiresBuild: true
 
+  /@types/bcryptjs/2.4.2:
+    resolution: {integrity: sha512-LiMQ6EOPob/4yUL66SZzu6Yh77cbzJFYll+ZfaPiPPFswtIlA/Fs1MzdKYA7JApHU49zQTbJGX3PDmCpIdDBRQ==}
+    dev: true
+
   /@types/json-schema/7.0.11:
     resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
     dev: true
@@ -741,6 +749,10 @@ packages:
 
   /base64-js/1.5.1:
     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
+    dev: false
+
+  /bcryptjs/2.4.3:
+    resolution: {integrity: sha512-V/Hy/X9Vt7f3BbPJEi8BdVFMByHi+jNXrYkW3huaybV/kQ0KJg0Y6PkEMbn+zeT+i+SiKZ/HMqJGIIt4LZDqNQ==}
     dev: false
 
   /binary-extensions/2.2.0:
