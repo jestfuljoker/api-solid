@@ -6,7 +6,11 @@
   "directories": {
     "doc": "docs"
   },
-  "scripts": {},
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsup src --out-dir build",
+    "start": "node build/server.js"
+  },
   "keywords": [],
   "author": "Christofer Assis",
   "license": "MIT",
@@ -16,5 +20,8 @@
     "tsup": "^6.7.0",
     "tsx": "^3.12.6",
     "typescript": "^5.0.2"
+  },
+  "dependencies": {
+    "fastify": "^4.15.0"
   }
 }
