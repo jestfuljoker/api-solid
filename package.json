@@ -1,0 +1,20 @@
+{
+  "name": "api-solid",
+  "version": "1.0.0",
+  "description": "GymPass style app",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {},
+  "keywords": [],
+  "author": "Christofer Assis",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^18.15.5",
+    "git-commit-msg-linter": "^4.9.2",
+    "tsup": "^6.7.0",
+    "tsx": "^3.12.6",
+    "typescript": "^5.0.2"
+  }
+}
