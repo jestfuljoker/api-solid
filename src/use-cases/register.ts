@@ -1,3 +1,4 @@
+import type { User } from '@prisma/client';
 import { hash } from 'bcryptjs';
 
 import type { UsersRepository } from '~/repositories/users-repository';
@@ -10,6 +11,10 @@ interface RegisterUseCaseRequest {
 	password: string;
 }
 
+interface RegisteUseCaseResponse {
+	user: User;
+}
+
 export class RegisterUseCase {
 	constructor(private usersRepository: UsersRepository) {}
 
@@ -17,7 +22,7 @@ export class RegisterUseCase {
 		email,
 		name,
 		password,
-	}: RegisterUseCaseRequest): Promise<void> {
+	}: RegisterUseCaseRequest): Promise<RegisteUseCaseResponse> {
 		const userWithSameEmail = await this.usersRepository.findByEmail(email);
 
 		if (userWithSameEmail) {
@@ -26,10 +31,14 @@ export class RegisterUseCase {
 
 		const passwordHash = await hash(password, 6);
 
-		await this.usersRepository.create({
+		const user = await this.usersRepository.create({
 			email,
 			name,
 			passwordHash,
 		});
+
+		return {
+			user,
+		};
 	}
 }
