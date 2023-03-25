@@ -1,3 +1,4 @@
+import { faker } from '@faker-js/faker';
 import { hash } from 'bcryptjs';
 import { describe, expect, it } from 'vitest';
 
@@ -21,16 +22,18 @@ function makeSut(): SutTypes {
 describe('Authenticate Use Case', () => {
 	it('should be able to authenticate', async () => {
 		const { sut, inMemoryUsersRepository } = makeSut();
+		const email = faker.internet.email();
+		const password = faker.internet.password();
 
 		await inMemoryUsersRepository.create({
-			name: 'jon Doe',
-			email: 'jon.doe@mail.com',
-			passwordHash: await hash('123456', 6),
+			name: faker.name.fullName(),
+			email,
+			passwordHash: await hash(password, 6),
 		});
 
 		const { user } = await sut.handle({
-			email: 'jon.doe@mail.com',
-			password: '123456',
+			email,
+			password,
 		});
 
 		expect(user.id).toEqual(expect.any(String));
