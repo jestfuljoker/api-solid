@@ -7,6 +7,7 @@ specifiers:
   '@typescript-eslint/eslint-plugin': 5.56.0
   '@typescript-eslint/parser': 5.56.0
   '@vitest/coverage-c8': 0.29.7
+  '@vitest/ui': 0.29.7
   bcryptjs: 2.4.3
   dotenv: 16.0.3
   eslint: 8.36.0
@@ -42,6 +43,7 @@ devDependencies:
   '@typescript-eslint/eslint-plugin': 5.56.0_d1c49064c568670e6a6217f618eab47f
   '@typescript-eslint/parser': 5.56.0_eslint@8.36.0+typescript@5.0.2
   '@vitest/coverage-c8': 0.29.7_vitest@0.29.7
+  '@vitest/ui': 0.29.7
   eslint: 8.36.0
   eslint-config-airbnb-base: 15.0.0_201514a69359a09b93b819e6d1f20366
   eslint-config-prettier: 8.8.0_eslint@8.36.0
@@ -58,7 +60,7 @@ devDependencies:
   tsx: 3.12.6
   typescript: 5.0.2
   vite-tsconfig-paths: 4.0.7_typescript@5.0.2
-  vitest: 0.29.7
+  vitest: 0.29.7_@vitest+ui@0.29.7
 
 packages:
 
@@ -418,6 +420,10 @@ packages:
       tslib: 2.5.0
     dev: true
 
+  /@polka/url/1.0.0-next.21:
+    resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
+    dev: true
+
   /@prisma/client/4.11.0_prisma@4.11.0:
     resolution: {integrity: sha512-0INHYkQIqgAjrt7NzhYpeDQi8x3Nvylc2uDngKyFDDj1tTRQ4uV1HnVmd1sQEraeVAN63SOK0dgCKQHlvjL0KA==}
     engines: {node: '>=14.17'}
@@ -612,7 +618,7 @@ packages:
       c8: 7.13.0
       picocolors: 1.0.0
       std-env: 3.3.2
-      vitest: 0.29.7
+      vitest: 0.29.7_@vitest+ui@0.29.7
     dev: true
 
   /@vitest/expect/0.29.7:
@@ -635,6 +641,16 @@ packages:
     resolution: {integrity: sha512-IalL0iO6A6Xz8hthR8sctk6ZS//zVBX48EiNwQguYACdgdei9ZhwMaBFV70mpmeYAFCRAm+DpoFHM5470Im78A==}
     dependencies:
       tinyspy: 1.1.1
+    dev: true
+
+  /@vitest/ui/0.29.7:
+    resolution: {integrity: sha512-KeOztcAldlFU5i8DKCQcmGrih1dVowurZy/9iPz5JyQdPJzej+nW1nI4nYvc4ZmUtA8+IAe9uViqnU7IXc1RNw==}
+    dependencies:
+      fast-glob: 3.2.12
+      flatted: 3.2.7
+      pathe: 1.1.0
+      picocolors: 1.0.0
+      sirv: 2.0.2
     dev: true
 
   /@vitest/utils/0.29.7:
@@ -2417,6 +2433,11 @@ packages:
       ufo: 1.1.1
     dev: true
 
+  /mrmime/1.0.1:
+    resolution: {integrity: sha512-hzzEagAgDyoU1Q6yg5uI+AorQgdvMCur3FcKf7NhMKWsaYg+RnbTyHRa/9IlLF9rf455MOCtcqqrQQ83pPP7Uw==}
+    engines: {node: '>=10'}
+    dev: true
+
   /ms/2.1.2:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
 
@@ -2947,6 +2968,15 @@ packages:
     resolution: {integrity: sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==}
     dev: true
 
+  /sirv/2.0.2:
+    resolution: {integrity: sha512-4Qog6aE29nIjAOKe/wowFTxOdmbEZKb+3tsLljaBRzJwtqto0BChD2zzH0LhgCSXiI+V7X+Y45v14wBZQ1TK3w==}
+    engines: {node: '>= 10'}
+    dependencies:
+      '@polka/url': 1.0.0-next.21
+      mrmime: 1.0.1
+      totalist: 3.0.0
+    dev: true
+
   /slash/3.0.0:
     resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==}
     engines: {node: '>=8'}
@@ -3235,6 +3265,11 @@ packages:
       is-number: 7.0.0
     dev: true
 
+  /totalist/3.0.0:
+    resolution: {integrity: sha512-eM+pCBxXO/njtF7vdFsHuqb+ElbxqtI4r5EAvk6grfAFyJ6IvWlSkfZ5T9ozC6xWw3Fj1fGoSmrl0gUs46JVIw==}
+    engines: {node: '>=6'}
+    dev: true
+
   /tr46/1.0.1:
     resolution: {integrity: sha512-dTpowEjclQ7Kgx5SdBkqRzVhERQXov8/l9Ft9dVM9fmg0W0KQSVaXX9T4i6twCPNtYiZM53lpSSUAwJbFPOHxA==}
     dependencies:
@@ -3475,7 +3510,7 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitest/0.29.7:
+  /vitest/0.29.7_@vitest+ui@0.29.7:
     resolution: {integrity: sha512-aWinOSOu4jwTuZHkb+cCyrqQ116Q9TXaJrNKTHudKBknIpR0VplzeaOUuDF9jeZcrbtQKZQt6yrtd+eakbaxHg==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
@@ -3509,6 +3544,7 @@ packages:
       '@vitest/expect': 0.29.7
       '@vitest/runner': 0.29.7
       '@vitest/spy': 0.29.7
+      '@vitest/ui': 0.29.7
       '@vitest/utils': 0.29.7
       acorn: 8.8.2
       acorn-walk: 8.2.0
