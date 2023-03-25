@@ -47,4 +47,14 @@ describe('Register Use Case', () => {
 			}),
 		).rejects.toBeInstanceOf(UserAlreadyExistsError);
 	});
+
+	it('should be able to register ', async () => {
+		const { user } = await registerUseCase.handle({
+			name: 'Jon Doe',
+			email: 'jon.doe@mail.com',
+			password: '123456',
+		});
+
+		expect(user.id).toEqual(expect.any(String));
+	});
 });
