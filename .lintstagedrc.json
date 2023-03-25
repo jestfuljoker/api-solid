@@ -1,6 +1,7 @@
 {
 	"*.ts": [
 		"eslint --ext ts --fix",
-		"prettier --write"
+		"prettier --write",
+		"pnpm test:staged"
 	]
 }

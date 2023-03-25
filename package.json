@@ -12,8 +12,9 @@
 		"start": "node build/server.js",
 		"studio": "prisma studio",
 		"migrate:dev": "prisma migrate dev",
-		"test": "vitest run",
-		"test:watch": "vitest"
+		"test": "vitest run --passWithNoTests",
+		"test:watch": "vitest",
+		"test:staged": "pnpm test related"
 	},
 	"keywords": [],
 	"author": "Christofer Assis",
