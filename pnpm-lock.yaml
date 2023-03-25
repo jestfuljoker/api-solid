@@ -1,6 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@faker-js/faker': 7.6.0
   '@prisma/client': 4.11.0
   '@types/bcryptjs': 2.4.2
   '@types/node': 18.15.5
@@ -38,6 +39,7 @@ dependencies:
   zod: 3.21.4
 
 devDependencies:
+  '@faker-js/faker': 7.6.0
   '@types/bcryptjs': 2.4.2
   '@types/node': 18.15.5
   '@typescript-eslint/eslint-plugin': 5.56.0_d1c49064c568670e6a6217f618eab47f
@@ -322,6 +324,11 @@ packages:
   /@eslint/js/8.36.0:
     resolution: {integrity: sha512-lxJ9R5ygVm8ZWgYdUweoq5ownDlJ4upvoWmO4eLxBYHdMo+vZ/Rx0EN6MbKWDJOSUGrqJy2Gt+Dyv/VKml0fjg==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    dev: true
+
+  /@faker-js/faker/7.6.0:
+    resolution: {integrity: sha512-XK6BTq1NDMo9Xqw/YkYyGjSsg44fbNwYRx7QK2CuoQgyy+f1rrTDHoExVM5PsyXCtfl2vs2vVJ0MN0yN6LppRw==}
+    engines: {node: '>=14.0.0', npm: '>=6.0.0'}
     dev: true
 
   /@fastify/ajv-compiler/3.5.0:
