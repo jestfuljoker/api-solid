@@ -4,7 +4,7 @@
 
 ### Functional Requirements
 
-- [ ] Must be possible to register;
+- [x] Must be possible to register;
 - [ ] It must be possible to authenticate;
 - [ ] It must be possible to obtain a logged user profile;
 - [ ] It must be possible to obtain the number of check-ins performed by the logged-in user;
@@ -19,7 +19,7 @@
 
 ### Non-Functional Requirements
 
-- [ ] The user's password must be encrypted;
+- [x] The user's password must be encrypted;
 - [ ] Application data must be persisted in a PostgresSQL database;
 - [ ] All data lists need to be paginated with 20 items per page;
 - [ ] The user must be identified by a JWT (JSON Web Token).
@@ -28,7 +28,7 @@
 
 ### Business Rules
 
-- [ ] The user cannot register with a duplicate email;
+- [x] The user cannot register with a duplicate email;
 - [ ] The user cannot make 2 check-ins on the same day;
 - [ ] The user cannot check-in if he is not close (100m) to the gym;
 - [ ] Check-in can only be validated up to 20 minutes after creation;
