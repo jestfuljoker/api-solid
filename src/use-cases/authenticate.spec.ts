@@ -5,6 +5,7 @@ import { describe, expect, it } from 'vitest';
 import { InMemoryUsersRepository } from '~/repositories';
 
 import { AuthenticateUseCase } from './authenticate';
+import { InvalidCredentialsError } from './errors';
 
 interface SutTypes {
 	sut: AuthenticateUseCase;
@@ -37,5 +38,16 @@ describe('Authenticate Use Case', () => {
 		});
 
 		expect(user.id).toEqual(expect.any(String));
+	});
+
+	it('should not be able to authenticate with wrong email', async () => {
+		const { sut } = makeSut();
+
+		await expect(() =>
+			sut.handle({
+				email: faker.internet.email(),
+				password: faker.internet.password(),
+			}),
+		).rejects.toBeInstanceOf(InvalidCredentialsError);
 	});
 });
