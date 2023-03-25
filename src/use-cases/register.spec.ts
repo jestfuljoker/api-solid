@@ -3,6 +3,7 @@ import { beforeEach, describe, expect, it } from 'vitest';
 
 import { InMemoryUsersRepository } from '~/repositories';
 
+import { UserAlreadyExistsError } from './errors';
 import { RegisterUseCase } from './register';
 
 let inMemoryUsersRepository: InMemoryUsersRepository;
@@ -27,5 +28,23 @@ describe('Register Use Case', () => {
 		);
 
 		expect(isPasswordCorrectlyHashed).toBe(true);
+	});
+
+	it('should not be able to register with same email twice', async () => {
+		const email = 'jon.doe@mail.com';
+
+		await registerUseCase.handle({
+			name: 'Jon Doe',
+			email,
+			password: '123456',
+		});
+
+		expect(() =>
+			registerUseCase.handle({
+				name: 'Jon Doe',
+				email,
+				password: '123456',
+			}),
+		).rejects.toBeInstanceOf(UserAlreadyExistsError);
 	});
 });
