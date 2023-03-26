@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { beforeEach, afterEach, describe, expect, it, vi } from 'vitest';
 
 import { InMemoryCheckInsRepository } from '~/repositories';
 
@@ -18,6 +18,14 @@ function makeSut(): SutTypes {
 }
 
 describe('CheckIn Use Case', () => {
+	beforeEach(() => {
+		vi.useFakeTimers();
+	});
+
+	afterEach(() => {
+		vi.useRealTimers();
+	});
+
 	it('should be able to check in', async () => {
 		const { sut } = makeSut();
 
@@ -27,5 +35,23 @@ describe('CheckIn Use Case', () => {
 		});
 
 		expect(checkIn.id).toEqual(expect.any(String));
+	});
+
+	it('should not be able to check in twice in the same day', async () => {
+		vi.setSystemTime(new Date(2022, 0, 20, 8, 0, 0));
+
+		const { sut } = makeSut();
+
+		await sut.handle({
+			gymId: 'gym-1',
+			userId: 'user-1',
+		});
+
+		await expect(() =>
+			sut.handle({
+				gymId: 'gym-1',
+				userId: 'user-1',
+			}),
+		).rejects.toBeInstanceOf(Error);
 	});
 });
