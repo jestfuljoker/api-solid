@@ -5,6 +5,7 @@ import { describe, expect, it } from 'vitest';
 
 import { InMemoryUsersRepository } from '~/repositories';
 
+import { ResourceNotFound } from './errors';
 import { GetUserProfileUseCase } from './get-user-profile';
 
 interface SutTypes {
@@ -43,5 +44,15 @@ describe('GetUserProfileUseCase Use Case', () => {
 		});
 
 		expect(user.name).toBe(newUser.name);
+	});
+
+	it('should not be able to get user profile with wrong id', async () => {
+		const { sut } = makeSut();
+
+		await expect(() =>
+			sut.handle({
+				userId: faker.random.word(),
+			}),
+		).rejects.toBeInstanceOf(ResourceNotFound);
 	});
 });
