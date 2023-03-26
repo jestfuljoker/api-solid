@@ -6,7 +6,7 @@
 
 - [x] Must be possible to register;
 - [x] It must be possible to authenticate;
-- [ ] It must be possible to obtain a logged user profile;
+- [x] It must be possible to obtain a logged user profile;
 - [ ] It must be possible to obtain the number of check-ins performed by the logged-in user;
 - [ ] It must be possible to obtain the user's check-in history;
 - [ ] It must be possible to pick up the user near gyms;
