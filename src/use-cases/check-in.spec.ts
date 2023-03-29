@@ -9,6 +9,7 @@ import {
 } from '~/repositories';
 
 import { CheckInUseCase } from './check-in';
+import { MaxDistanceError, MaxNumberCheckInsError } from './errors';
 
 interface SutTypes {
 	sut: CheckInUseCase;
@@ -45,13 +46,13 @@ function makeCheckInInputData(gymId?: string): CheckInInput {
 }
 
 function createGym(gymsRepository: InMemoryGymsRepository, gym?: Gym): void {
-	gymsRepository.gyms.push(
+	gymsRepository.create(
 		gym || {
 			id: 'gym-01',
 			title: faker.company.name(),
 			description: faker.random.words(),
-			latitude: new Decimal(-25.0776373),
-			longitude: new Decimal(-50.2054339),
+			latitude: -25.0776373,
+			longitude: -50.2054339,
 			phone: faker.phone.number(),
 		},
 	);
@@ -87,7 +88,7 @@ describe('CheckIn Use Case', () => {
 
 		await expect(() =>
 			sut.handle(makeCheckInInputData()),
-		).rejects.toBeInstanceOf(Error);
+		).rejects.toBeInstanceOf(MaxNumberCheckInsError);
 	});
 
 	it('should not able to check in twice but in different days', async () => {
@@ -108,7 +109,7 @@ describe('CheckIn Use Case', () => {
 		expect(checkIn.id).toEqual(expect.any(String));
 	});
 
-	it.only('should not be able to check in on distant gym', async () => {
+	it('should not be able to check in on distant gym', async () => {
 		const { sut, inMemoryGymsRepository } = makeSut();
 
 		createGym(inMemoryGymsRepository, {
@@ -124,6 +125,6 @@ describe('CheckIn Use Case', () => {
 
 		await expect(
 			sut.handle(makeCheckInInputData('gym-02')),
-		).rejects.toBeInstanceOf(Error);
+		).rejects.toBeInstanceOf(MaxDistanceError);
 	});
 });
