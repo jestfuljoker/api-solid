@@ -1,3 +1,5 @@
+import { faker } from '@faker-js/faker';
+import type { Gym } from '@prisma/client';
 import { Decimal } from '@prisma/client/runtime/library';
 import { beforeEach, afterEach, describe, expect, it, vi } from 'vitest';
 
@@ -33,24 +35,26 @@ function makeSut(): SutTypes {
 	return { sut, inMemoryCheckInsRepository, inMemoryGymsRepository };
 }
 
-function makeCheckInInputData(): CheckInInput {
+function makeCheckInInputData(gymId?: string): CheckInInput {
 	return {
-		gymId: 'gym-01',
+		gymId: gymId || 'gym-01',
 		userId: 'user-01',
 		latitude: -25.0776373,
 		longitude: -50.2054339,
 	};
 }
 
-function createGym(gymsRepository: InMemoryGymsRepository): void {
-	gymsRepository.gyms.push({
-		id: 'gym-01',
-		title: "Javascript's Gym",
-		description: null,
-		latitude: new Decimal(0),
-		longitude: new Decimal(0),
-		phone: '123456',
-	});
+function createGym(gymsRepository: InMemoryGymsRepository, gym?: Gym): void {
+	gymsRepository.gyms.push(
+		gym || {
+			id: 'gym-01',
+			title: faker.company.name(),
+			description: faker.random.words(),
+			latitude: new Decimal(-25.0776373),
+			longitude: new Decimal(-50.2054339),
+			phone: faker.phone.number(),
+		},
+	);
 }
 
 describe('CheckIn Use Case', () => {
@@ -102,5 +106,24 @@ describe('CheckIn Use Case', () => {
 		const { checkIn } = await sut.handle(input);
 
 		expect(checkIn.id).toEqual(expect.any(String));
+	});
+
+	it.only('should not be able to check in on distant gym', async () => {
+		const { sut, inMemoryGymsRepository } = makeSut();
+
+		createGym(inMemoryGymsRepository, {
+			id: 'gym-02',
+			title: faker.company.name(),
+			description: faker.random.words(),
+			phone: faker.phone.number(),
+			latitude: new Decimal(-25.0726307),
+			longitude: new Decimal(-50.1980634),
+		});
+
+		createGym(inMemoryGymsRepository);
+
+		await expect(
+			sut.handle(makeCheckInInputData('gym-02')),
+		).rejects.toBeInstanceOf(Error);
 	});
 });
