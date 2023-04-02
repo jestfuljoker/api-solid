@@ -17,7 +17,8 @@
 		"test:watch": "vitest",
 		"test:staged": "pnpm test related",
 		"test:ci": "vitest run --coverage",
-		"test:ui": "vitest --ui"
+		"test:ui": "vitest --ui",
+		"prepare": "husky install"
 	},
 	"keywords": [],
 	"author": "Christofer Assis",
