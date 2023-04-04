@@ -48,4 +48,35 @@ describe('Search gyms Use Case', () => {
 			expect.objectContaining({ title: 'Javascript Gym' }),
 		]);
 	});
+
+	it('should be able to fetch paginated gym search', async () => {
+		const { sut, inMemoryGymsRepository } = makeSut();
+
+		const promises = [];
+
+		for (let index = 1; index <= 22; index += 1) {
+			promises.push(
+				inMemoryGymsRepository.create({
+					title: `Javascript Gym ${index}`,
+					latitude: 0,
+					longitude: 0,
+					description: faker.random.words(),
+					phone: faker.phone.number(),
+				}),
+			);
+		}
+
+		await Promise.all(promises);
+
+		const { gyms } = await sut.handle({
+			page: 2,
+			query: 'Javascript',
+		});
+
+		expect(gyms).toHaveLength(2);
+		expect(gyms).toEqual([
+			expect.objectContaining({ title: 'Javascript Gym 21' }),
+			expect.objectContaining({ title: 'Javascript Gym 22' }),
+		]);
+	});
 });
