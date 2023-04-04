@@ -12,7 +12,7 @@
 - [x] It must be possible to pick up the user near gyms (Until 10km);
 - [x] It must be possible for the user to locate the gyms by name;
 - [x] It must be possible to check-in at a gym;
-- [ ] It must be possible to validate a user's check-in;
+- [x] It must be possible to validate a user's check-in;
 - [x] It must be possible to register a gym.
 
 ---
@@ -31,6 +31,6 @@
 - [x] The user cannot register with a duplicate email;
 - [x] The user cannot make 2 check-ins on the same day;
 - [x] The user cannot check-in if he is not close (100m) to the gym;
-- [ ] Check-in can only be validated up to 20 minutes after creation;
+- [x] Check-in can only be validated up to 20 minutes after creation;
 - [ ] Check-in can only be validated by administrators;
 - [ ] The gym can only be registered by administrators.
