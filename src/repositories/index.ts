@@ -1,4 +1,4 @@
-export * from './prisma/prisma-users-repository';
+export * from './prisma';
 export * from './in-memory';
 export * from './users-repository';
 export * from './check-ins-repository';
