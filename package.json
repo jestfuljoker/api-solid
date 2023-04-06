@@ -47,7 +47,8 @@
 		"tsx": "3.12.6",
 		"typescript": "5.0.2",
 		"vite-tsconfig-paths": "4.0.7",
-		"vitest": "0.29.7"
+		"vitest": "0.29.7",
+		"vitest-environment-prisma": "link:prisma/vitest-environment-prisma"
 	},
 	"dependencies": {
 		"@fastify/jwt": "6.7.1",
